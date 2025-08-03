@@ -69,11 +69,8 @@ func (e *err) Cause() error {
 }
 
 func (e *err) WithCause(cause error) StackError {
-	return &err{
-		message: e.message,
-		stack:   e.stack,
-		cause:   cause,
-	}
+	e.cause = cause
+	return e
 }
 
 func (e *err) StackInfo() StackInfo {
